@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
-  def new
+  def index
+    #indexアクションの中で新規投稿画面を表示する変数を定義する
+    #view(form_withの引数)へ渡すためのインスタンス変数に空のモデルオブジェクト(Book.new)を生成する
+    @books = Book.all
     @book = Book.new
   end
 
@@ -12,4 +15,5 @@ class BooksController < ApplicationController
   private
   def book_params
     params.require(:book).permit(:title, :body)
+  end
 end
