@@ -10,6 +10,11 @@ class BooksController < ApplicationController
     book = Book.new(book_params)
     if book.save
       redirect_to book_path(book.id), notice:'Book was successfullly created.'
+    else
+      @books = Book.all
+      # 　　　↓のbookはBook.new(book_params)を代入したbook変数
+      @book = book
+      render :index
     end
   end
 
@@ -25,6 +30,9 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     if book.update(book_params)
       redirect_to book_path(book.id), notice:'Book was successfullly updated.'
+    else
+      @book = book
+      render action: :edit
     end
   end
 
