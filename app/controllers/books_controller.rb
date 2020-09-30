@@ -30,7 +30,7 @@ class BooksController < ApplicationController
       redirect_to book_path(book.id), notice:'Book was successfully updated.'
     else
       @book = book
-      render action: :edit
+      render :edit
     end
   end
 
